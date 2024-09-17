@@ -1,10 +1,8 @@
+import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.write("Here's our first attempt at using data to create a table:")
+dataframe = pd.DataFrame(np.random.randn(10, 20), columns=("col %d" % i for i in range(20)))
 
-st.write(pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 40]}))
-
-st.dataframe(pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 40]}))
-
-st.table(pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 40]}))
+st.dataframe(dataframe.style.highlight_max(axis=0))
+st.table(dataframe.style.highlight_max(axis=0))
