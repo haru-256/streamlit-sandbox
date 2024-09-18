@@ -1,7 +1,6 @@
-import time
-
 import numpy as np
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
@@ -58,13 +57,21 @@ with right_column:
 "Starting a long computation..."
 
 # Add a placeholder
-latest_iteration = st.empty()
-bar = st.progress(0)
+# latest_iteration = st.empty()
+# bar = st.progress(0)
 
-for i in range(100):
-    # Update the progress bar with each iteration.
-    latest_iteration.text(f"Iteration {i+1}")
-    bar.progress(i + 1)
-    time.sleep(0.1)
+# for i in range(100):
+#     # Update the progress bar with each iteration.
+#     latest_iteration.text(f"Iteration {i+1}")
+#     bar.progress(i + 1)
+#     time.sleep(0.1)
 
-"...and now we're done!"
+# "...and now we're done!"
+
+# Generate random data
+data = np.random.randn(1000)
+df = pd.DataFrame(data, columns=["x"])
+
+# Create a histogram
+fig = px.histogram(df, x="x")
+st.plotly_chart(fig)
